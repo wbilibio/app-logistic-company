@@ -47,15 +47,15 @@ Follow the instructions to run the API correctly:
    ```sh
    npm install
    ```
-2. To install the Angular CLI run
+3. To install the Angular CLI run
    ```sh
    npm install -g @angular/cli
    ```
 More information about how to install angular <a href="https://angular.io/guide/setup-local">click here</a>
 
-3. Duplicate /shared/@env/environment.local.example.ts to /shared/@env/environment.local.ts 
+4. Duplicate /shared/@env/environment.local.example.ts to /shared/@env/environment.local.ts 
 
-4. Generate Google Maps API Key.
+5. Generate Google Maps API Key.
    - Logged in Google account and create project on <a href="https://console.cloud.google.com/google/maps-apis/overview">Google Cloud</a>.
    - Activate these three APIs: Directions API, Maps JavaScript API, Places API 
    - At the end of the process, an api key is generated: Maps API Key. The key can be found in the "credentials" menu.
@@ -63,13 +63,13 @@ More information about how to install angular <a href="https://angular.io/guide/
    ```js
     const environment.keys.google_maps = 'ENTER YOUR API KEY';
    ```
-5. API url 
+6. Configure API url 
 
    ```js
     const environment.logistic_api = 'ENTER YOUR URL API';
    ```   
 
-4. Run local
+7. Run local
    ```sh
    ng serve --configuration=local
    ```

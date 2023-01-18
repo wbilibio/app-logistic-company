@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Create Storage</h1>
+
+<mat-dialog-content>
+  <div class="storage-group-info">
+    <form [formGroup]="formCreateStorage" novalidate>
+      <mat-form-field class="full-row" appearance="fill">
+        <mat-label>Storage Name</mat-label>
+        <input matInput placeholder="Storage Name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="full-row" appearance="fill">
+        <mat-label>Limit Stock</mat-label>
+        <input matInput type="number" placeholder="Limit Stock" formControlName="limit_stock" />
+      </mat-form-field>
+      <google-map-autocomplete
+        (addressSelected)="onAddressSelected($event)"
+      >
+      </google-map-autocomplete>
+      <div class="actions">
+        <button type="submit" mat-flat-button color="default" (click)="close()">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          (click)="createStorage()"
+          [disabled]="formCreateStorage.invalid"
+        >
+          Create Storage
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

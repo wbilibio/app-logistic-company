@@ -1,0 +1,31 @@
+<mat-progress-bar [@toggle]="$progressBarVisibility | async" mode="indeterminate" color="warn"> </mat-progress-bar>
+
+<mat-sidenav-container [@.disabled]="true">
+  <mat-sidenav [opened]="true" mode="side">
+    <div class="app-name">Logistic Company</div>
+
+    <mat-list (click)="closeSidebar()">
+
+      <a [routerLink]="['/storages']" routerLinkActive="active">
+        <mat-list-item>
+          <mat-icon aria-hidden="false" aria-label="Warehouse icon" fontIcon="warehouse"></mat-icon>
+          <span class="text">Storages</span>
+        </mat-list-item>
+      </a>
+
+      <a [routerLink]="['/packages']" routerLinkActive="active">
+        <mat-list-item>
+          <mat-icon aria-hidden="false" aria-label="Package icon" fontIcon="inventory_2"></mat-icon>
+          <span class="text">Packages</span>
+        </mat-list-item>
+      </a>
+
+    </mat-list>
+  </mat-sidenav>
+
+  <div class="main-content">
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-sidenav-container>

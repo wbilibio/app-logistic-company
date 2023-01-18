@@ -1,0 +1,36 @@
+<content-toolbar title="Edit > " [subtitle]="storageName" [backRouterLink]="['..']"> </content-toolbar>
+
+<div *ngIf="isLoading" class="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="content" #content>
+  <div class="account-group-info">
+    <form [formGroup]="formGeneral" novalidate>
+      <h2>Storage</h2>
+      <ng-container>
+        <mat-form-field class="full-row" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+      </ng-container>
+      <ng-container>
+        <mat-form-field class="full-row" appearance="outline">
+          <mat-label>Limit Stock</mat-label>
+          <input matInput placeholder="Limit Stock" formControlName="limit_stock" />
+        </mat-form-field>
+      </ng-container>
+      <div class="info">
+        <h4 *ngIf="address?.street">Street: {{ address?.street }}</h4>
+        <h4 *ngIf="address?.city">City: {{ address?.city }}</h4>
+        <h4 *ngIf="address?.neighborhood">Neighborhood: {{ address?.neighborhood }}</h4>
+        <h4 *ngIf="address?.zipcode">Zipcode: {{ address?.zipcode }}</h4>
+      </div>
+      <div class="action-buttons">
+        <button type="submit" mat-flat-button color="primary" (click)="submit()" [disabled]="formGeneral.invalid">
+          UPDATE
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

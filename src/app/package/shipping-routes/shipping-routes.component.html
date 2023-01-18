@@ -1,0 +1,51 @@
+<content-toolbar [title]="title" [backRouterLink]="['../']">
+</content-toolbar>
+<div class="content" #content>
+    <h2>Create route and way points</h2>
+    <div class="box-routes">
+        <div class="field">
+            <p><b>Origin:</b></p>
+            <h4><b>{{storageLocation.name}}</b><br></h4>
+            <h5>{{storageLocation.street}}<br>{{storageLocation.city}}, {{storageLocation.state}}</h5>
+        </div>
+        <ng-container *ngIf="wayPointFields.length">
+            <div class="field"  *ngFor="let wp of wayPointFields">
+                <div class="box-way-point">
+                    <p><b>Way point</b>: {{wp}}</p>
+                    <google-map-autocomplete  (addressSelected)="onWayPointSelected($event)"></google-map-autocomplete>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="field" *ngIf="destination">
+            <p><b>Add way point:</b></p>
+            <button mat-mini-fab color="accent" (click)="addWayPoint()">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+        </div>
+        <div class="field">
+            <p><b>Destination</b>:</p>
+            <google-map-autocomplete (addressSelected)="onDestinationSelected($event)"></google-map-autocomplete>
+        </div>
+        <div class="actions">
+            <button
+                    type="submit"
+                    mat-flat-button
+                    color="primary"
+                    (click)="saveRoute()"
+                    [disabled]="routeValid()"
+            >
+                <mat-icon>add_circle</mat-icon> Save route
+            </button>
+        </div>
+    </div>
+    <div class="render-map">
+        <google-map-directions
+                [wayPoint]="wayPoint"
+                [origin]="origin"
+                [destination]="destination"
+        ></google-map-directions>
+    </div>
+</div>
+
+

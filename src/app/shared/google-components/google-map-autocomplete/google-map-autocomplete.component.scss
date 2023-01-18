@@ -1,0 +1,29 @@
+.map-autocomplete {
+  width: 100%;
+  .field-autocomplete {
+    width: 99%;
+    background: #f5f5f5;
+    border: 0;
+    border-bottom: 1px solid;
+    height: 56px;
+    padding: 5px;
+    &::-webkit-input-placeholder { /* Edge */
+      color: rgba(0,0,0,0.6);
+      font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+      font-size: var(--mdc-typography-body1-font-size, 16px);
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: rgba(0,0,0,0.6);
+      font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+      font-size: var(--mdc-typography-body1-font-size, 16px);
+    }
+
+    &::placeholder {
+      color: rgba(0,0,0,0.6);
+      font-family: var(--mdc-typography-body1-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+      font-size: var(--mdc-typography-body1-font-size, 16px);
+    }
+  }
+}
+

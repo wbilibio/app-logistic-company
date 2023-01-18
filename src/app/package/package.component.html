@@ -1,0 +1,91 @@
+<content-toolbar [title]="title" [backRouterLink]="['../dashboard']">
+    <button mat-flat-button color="primary" (click)="openCreateDialog()">
+        <mat-icon>add_circle</mat-icon>
+        CREATE
+    </button>
+</content-toolbar>
+<div class="content" #content>
+    <h1>{{title}}</h1>
+    <div class="loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner [diameter]="30"></mat-spinner>
+    </div>
+    <div class="alert-warning" [hidden]="dataSource.data.length || isLoadingResults">No Package found.</div>
+
+    <div class="table-container" [hidden]="!dataSource.data.length">
+        <table mat-table
+               [dataSource]="dataSource"
+               (matSortChange)="sortChange($event)"
+               matSortDisableClear="true"
+               matSortActive="name"
+               matSortDirection="asc"
+               matSort>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID. </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef  mat-sort-header  sortActionDescription="Sort by name"> Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let row">
+                    <span class="tag waiting-withdrawal" *ngIf="!row.transactions.length">waiting-withdrawal</span>
+                    <span class="tag" [class]="row.transactions[0].status" *ngIf="row.transactions.length">{{row.transactions[0].status}}</span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell class="td-right" *matCellDef="let row">
+                    <button class="mat-warning" mat-raised-button
+                            matTooltip="Put to storage to enable route"
+                            matTooltipPosition="left"
+                            color="warning"
+                            *ngIf="!row.storage_location_id && row.transactions[0]?.status !== 'delivered'"
+                    >
+                        <mat-icon>warning</mat-icon>
+                    </button>
+                    <a
+                            mat-flat-button
+                            color="primary"
+                            class="uk-margin-small-right"
+                            *ngIf="row.storage_location_id && row.transactions[0]?.status !== 'delivered'"
+                            [routerLink]="['../packages/' + row.id + '/shipping-routes']"
+                    >
+                        <mat-icon>map</mat-icon>
+                    </a>
+                    <a
+                            mat-flat-button
+                            color="success"
+                            class="uk-margin-small-right"
+                            [routerLink]="['../packages/' + row.id]"
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-flat-button class="mat-delete" color="danger" (click)="deletePackage(row.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic rows">
+        </mat-paginator>
+    </div>
+
+
+
+
+</div>
+

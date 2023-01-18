@@ -1,0 +1,142 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "logistic-company": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "aot": true,
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["src/polyfills.ts"],
+            "tsConfig": "./tsconfig.app.json",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "assets": [
+              "src/assets"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "shared/@env/environment.ts",
+                  "with": "shared/@env/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "shared/@env/environment.ts",
+                  "with": "shared/@env/environment.stag.ts"
+                }
+              ]
+            },
+            "local": {
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": false,
+              "fileReplacements": [
+                {
+                  "replace": "shared/@env/environment.ts",
+                  "with": "shared/@env/environment.local.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "logistic-company:build:production"
+            },
+            "development": {
+              "browserTarget": "logistic-company:build:development"
+            },
+            "local": {
+              "browserTarget": "logistic-company:build:local"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "logistic-company:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["src/polyfills.js", "src/polyfills.js/testing"],
+            "tsConfig": "./tsconfig.spec.json",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "./tsconfig.app.json",
+              "./tsconfig.spec.json",
+              "src/app/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "logistic-company:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "logistic-company:serve:production"
+            }
+          }
+        }
+      }
+    }
+  }
+}

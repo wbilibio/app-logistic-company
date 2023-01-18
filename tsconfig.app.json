@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": ["google.maps"]
+  },
+  "files": [
+    "./src/main.ts",
+    "./src/polyfills.ts"
+  ],
+  "include": [
+    "@app/**/*.d.ts"
+  ],
+  "exclude": [
+    "@app/test.ts",
+    "@app/**/*.spec.ts",
+    "@app/**/*-specs.ts",
+    "@app/**/*.avoid.ts",
+    "@app/**/*.0.ts",
+    "@app/**/*.1.ts",
+    "@app/**/*.1b.ts",
+    "@app/**/*.2.ts",
+    "@app/**/*.3.ts",
+    "@app/**/*.4.ts",
+    "@app/**/*.5.ts",
+    "@app/**/*.6.ts",
+    "@app/**/*.7.ts",
+    "@app/**/testing"
+  ]
+}

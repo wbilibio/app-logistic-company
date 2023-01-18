@@ -1,0 +1,49 @@
+<content-toolbar title="Edit > " [subtitle]="packageName" [backRouterLink]="['..']"> </content-toolbar>
+
+<div *ngIf="isLoading" class="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="content" #content>
+  <div class="account-group-info">
+    <form [formGroup]="formGeneral" novalidate>
+      <h2>Package</h2>
+      <mat-form-field class="full-row" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="full-row" appearance="fill">
+        <mat-label>Select a storage</mat-label>
+        <mat-select formControlName="storage">
+          <mat-option *ngFor="let storage of storages" [value]="storage.id">
+            {{storage.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="box-status">
+        <mat-form-field class="full-row" appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let status of listStatus" [value]="status">
+              {{status}}
+            </mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        <button mat-raised-button
+                matTooltip="Start a route to enable status"
+                matTooltipPosition="left"
+                *ngIf="!transactions.length"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+      </div>
+
+      <div class="action-buttons">
+        <button type="submit" mat-flat-button color="primary" (click)="submit()" [disabled]="formGeneral.invalid">
+          UPDATE
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

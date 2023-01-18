@@ -1,0 +1,105 @@
+$base-color: #453073;
+$success-color: #48a759;
+$danger-color:#df2d2d;
+$warning-color: #df8f2d;
+
+@mixin layout {
+  .content {
+    padding: 0 3em;
+  }
+
+  button.mat-warning {
+    background-color: $warning-color !important;
+    color: #ffffff !important;
+  }
+
+  .mat-mdc-unelevated-button.mat-primary:not(:disabled) {
+    background-color: $base-color;
+    color: #ffffff;
+
+    .mat-icon {
+      color: #ffffff;
+    }
+  }
+
+  .mat-mdc-unelevated-button.mat-success:not(:disabled) {
+    background-color: $success-color;
+    color: #ffffff;
+
+    .mat-icon {
+      color: #ffffff;
+    }
+  }
+
+  .mat-mdc-unelevated-button.mat-danger:not(:disabled) {
+    background-color: $danger-color;
+    color: #ffffff;
+
+    .mat-icon {
+      color: #ffffff;
+    }
+  }
+
+  ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+  ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: $base-color !important;
+  }
+
+  .alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #ffeeba;
+    border-radius: 0.25rem;
+    margin-top: 30px;
+  }
+}
+@mixin table-loading-styles {
+  .table-container {
+    position: relative;
+    min-height: 60vh;
+    overflow: auto;
+    border-top: solid gray 2px;
+    width: 100%;
+  }
+
+  .table-container > table {
+    width: 100%;
+  }
+
+  .loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.041);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat-column-id {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+  }
+
+  .mat-column-actions {
+    max-width: 220px;
+    text-align: right;
+    font-weight: bold;
+    .mdc-button {
+      margin-right: 5px;
+      padding: 0 8px;
+      min-width: 48px;
+      .mat-icon {
+        margin-right: 0;
+      }
+    }
+  }
+}
+

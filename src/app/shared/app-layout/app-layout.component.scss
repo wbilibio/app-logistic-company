@@ -1,0 +1,155 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+.mat-sidenav {
+  hr {
+    border-color: rgba(255, 255, 255, 0.6);
+    margin: 10px 20px;
+  }
+}
+
+.fill {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+
+.main-content {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: #fff;
+
+  .content-wrapper {
+    height: 100%;
+  }
+}
+
+mat-sidenav {
+  width: 220px;
+  background: #453073;
+  color: white;
+
+  .app-name {
+    padding: 20px 20px;
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+mat-sidenav mat-list {
+  mat-divider {
+    margin: 13px 0;
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .hidden-link {
+    visibility: hidden;
+  }
+
+  .mat-list-item {
+    height: 48px;
+    color: rgba(255, 255, 255, 0.6);
+    border-left: 3px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &.sub-header {
+      font-size: 11px;
+      height: 20px;
+      color: rgba(255, 255, 255, 0.6);
+      padding-left: 5px;
+    }
+
+    .text {
+      font-size: 14px;
+      margin-left: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+    }
+  }
+}
+
+mat-sidenav mat-list {
+  a {
+    text-decoration: none;
+    color: #93e6ef;
+    cursor: pointer;
+    mat-list-item  {
+      .mat-icon,
+      .text {
+        color: #93e6ef;
+      }
+    }
+    &:hover {
+      background: #ffffff;
+      color: #453073;
+      display: block;
+      cursor: pointer;
+      mat-list-item  {
+        .mat-icon,
+        .text {
+          color: #453073;
+        }
+      }
+    }
+    &.active {
+      mat-list-item  {
+        background-color: #ffffff;
+        .mat-icon,
+        .text {
+          color: #453073;
+        }
+      }
+    }
+  }
+
+  mat-list-item {
+    cursor: pointer;
+    .mdc-list-item__content {
+      line-height: 48px;
+      display: block;
+    }
+    .mat-icon {
+      top: 4px;
+      margin-right: 8px;
+      position: relative;
+    }
+  }
+
+  a.active:hover {
+    mat-list-item {
+      background: #ffffff;
+      color: #453073;
+      .text {
+        background: #ffffff;
+        color: #453073;
+      }
+    }
+  }
+}
+
+mat-progress-bar {
+  position: fixed;
+  z-index: 3;
+}
+
+.custom-icon {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}

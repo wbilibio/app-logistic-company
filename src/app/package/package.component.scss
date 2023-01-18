@@ -1,0 +1,24 @@
+@import 'src/assets/pattern';
+@include layout;
+@include table-loading-styles;
+
+.tag {
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  &.waiting-withdrawal {
+    background: #75c3ff;
+  }
+  &.sent {
+    background: #f1a967;
+  }
+  &.in-transit {
+    background: #8f5c3f;
+  }
+  &.delivered {
+    background: #6f852b;
+  }
+}
+
+

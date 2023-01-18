@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Create Package</h1>
+
+<mat-dialog-content>
+  <div class="package-group-info">
+    <form [formGroup]="formCreatePackage" novalidate>
+      <mat-form-field class="full-row" appearance="fill">
+        <mat-label>Package Name</mat-label>
+        <input matInput placeholder="Package Name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="full-row" appearance="fill">
+        <mat-label>Select a storage</mat-label>
+        <mat-select formControlName="storage">
+          <mat-option *ngFor="let storage of storages" [value]="storage.id">
+            {{storage.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="actions">
+        <button type="submit" mat-flat-button color="default" (click)="close()">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          (click)="createPackage()"
+          [disabled]="formCreatePackage.invalid"
+        >
+          Create Package
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

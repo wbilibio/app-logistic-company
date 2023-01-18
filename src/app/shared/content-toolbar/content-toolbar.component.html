@@ -1,0 +1,35 @@
+<mat-toolbar class="content-toolbar">
+  <span class="button-wrapper button-desktop" *ngIf="!hideBack">
+    <a *ngIf="returnUrl && !disableReturnUrl; else routeNav" (click)="navigateReturnUrl()" mat-icon-button class="back-icon-button">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+
+    <ng-template #routeNav>
+      <a *ngIf="hasBackRouterLink" [routerLink]="backRouterLink" [queryParams]="queryParams" mat-icon-button
+        class="back-icon-button" [queryParamsHandling]="queryParamsHandling">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+      <a *ngIf="navigateBackHistory" (click)="_back()" mat-icon-button class="back-icon-button">
+        <mat-icon>arrow_back</mat-icon>
+      </a>
+    </ng-template>
+
+  </span>
+  <span class="button-wrapper button-mobile">
+    <button class="menu-button" mat-flat-button
+            (click)="toggleSidenav()">
+      <mat-icon>
+        menu
+      </mat-icon>
+    </button>
+  </span>
+  <ng-container>
+    <div class="toolbar-title multi-line-title">
+      <span class="content-toolbar-title">{{ title }} <span *ngIf="!!subtitle">{{ subtitle }}</span></span>
+    </div>
+  </ng-container>
+
+  <div class="fill"></div>
+
+  <ng-content></ng-content>
+</mat-toolbar>

@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.container-map {
+  box-sizing: initial;
+}
+.full {
+  width:100%;
+  height: 60vh;
+}

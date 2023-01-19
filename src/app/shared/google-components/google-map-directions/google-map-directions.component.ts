@@ -53,7 +53,6 @@ export class GoogleMapDirectionsComponent implements OnInit, OnChanges {
     }
     if ('wayPoint' in changes && this.wayPoint) {
       this.listWayPoints.push(changes["wayPoint"].currentValue)
-      console.log('changing wayPoint',this.listWayPoints);
       this.loadGoogleMap();
     }
 
@@ -109,7 +108,6 @@ export class GoogleMapDirectionsComponent implements OnInit, OnChanges {
         });
       });
     }
-    console.log(icon_destination);
     new google.maps.Marker({
       position: this.destination,
       map: this.map,
@@ -133,7 +131,6 @@ export class GoogleMapDirectionsComponent implements OnInit, OnChanges {
         stopover: true,
       });
     });
-    console.log('points',this.mapWayPoints);
     let request = {
       origin: this.origin,
       destination: this.destination,

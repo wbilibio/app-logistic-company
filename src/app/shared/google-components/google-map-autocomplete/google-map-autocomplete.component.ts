@@ -29,7 +29,7 @@ export class GoogleMapAutocompleteComponent implements AfterViewInit {
 
     loader.load().then(()=>{
       autocomplete = new google.maps.places.Autocomplete(this.ship.nativeElement, {
-        componentRestrictions: { country: ["BR"] },
+        componentRestrictions: { country: ["US", "CR"] },
         fields: ['address_components', 'geometry', 'name'],
         types: ["establishment"],
       });

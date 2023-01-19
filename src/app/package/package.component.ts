@@ -83,13 +83,13 @@ export class PackageComponent implements OnInit {
     });
     ref.afterClosed().subscribe(response => {
       if (response === 'success') {
-        this.updateList();
         this.notify('Package successfully created!');
       } else if(response === 'error') {
         this.notify('Oops! Something went wrong');
-      } else {
-        this.notify('🔔 ' + response,'',400000);
+      } else if(response) {
+        this.notify('🔔 ' + response,'',4000);
       }
+      this.updateList();
     });
   }
 

@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PackageController} from "@api/controllers/package.controller";
 import {PackageTransactionController} from "@api/controllers/package-transaction.controller";
 import {StorageController} from "@api/controllers/storage.controller";
@@ -30,6 +30,7 @@ export class ShippingRoutesComponent {
   constructor(
       private snackBar: MatSnackBar,
       private route: ActivatedRoute,
+      readonly router: Router,
       private packageController: PackageController,
       private storageController: StorageController,
       private packageTransactionController: PackageTransactionController
@@ -132,6 +133,9 @@ export class ShippingRoutesComponent {
     responseAPI$.subscribe({
       next: value => {
         this.notify('Added successfully new route');
+        this.router.navigate([`../../`], {
+          relativeTo: this.route
+        });
       },
       error: err => {
         console.log('obs error', err)

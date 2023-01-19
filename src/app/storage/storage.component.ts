@@ -15,7 +15,7 @@ import {CreateStorageComponent} from "@apps/storage/create-storage/create-storag
 export class StorageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  title = 'List storages';
+  title = 'List storage locations';
 
   public dataSource = new MatTableDataSource([]);
 
@@ -87,6 +87,8 @@ export class StorageComponent implements OnInit {
         this.notify('Storage successfully created!');
       } else if(response === 'error') {
         this.notify('Oops! Something went wrong');
+      } else if(response) {
+        this.notify('🔔 ' + response,'',4000);
       }
     });
   }

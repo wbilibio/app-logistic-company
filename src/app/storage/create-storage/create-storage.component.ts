@@ -38,7 +38,11 @@ export class CreateStorageComponent implements OnInit {
     let responseAPI$ = this.storageController.save(body);
     responseAPI$.subscribe({
       next: value => {
+        if(value?.status === 409) {
+          this.ref.close(value.response.message);
+        } else {
           this.ref.close('success');
+        }
       },
       error: err => {
         this.ref.close('error');

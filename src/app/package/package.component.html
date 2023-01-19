@@ -44,7 +44,7 @@
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell class="td-right" *matCellDef="let row">
                     <button class="mat-warning" mat-raised-button
-                            matTooltip="Put to storage to enable route"
+                            matTooltip="Add to storage location"
                             matTooltipPosition="left"
                             color="warning"
                             *ngIf="!row.storage_location_id && row.transactions[0]?.status !== 'delivered'"
@@ -65,6 +65,7 @@
                             color="success"
                             class="uk-margin-small-right"
                             [routerLink]="['../packages/' + row.id]"
+                            *ngIf="row.transactions[0]?.status !== 'delivered'"
                     >
                         <mat-icon>edit</mat-icon>
                     </a>

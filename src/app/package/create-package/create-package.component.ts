@@ -69,8 +69,7 @@ export class CreatePackageComponent implements OnInit {
     let responseAPI$ = this.packageController.associateStorage(body, package_id);
     responseAPI$.subscribe({
       next: value => {
-        console.log('Success', value);
-        if(value.status === 400){
+        if(value?.status === 400){
           this.ref.close(value.response.message);
         } else {
           this.ref.close('success');

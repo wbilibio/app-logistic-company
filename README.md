@@ -5,7 +5,7 @@
 
 ### Access Node API repository 
 
-[![Repository](https://img.shields.io/badge/Node-Frontend-339933?style=for-the-badge&logo=nodedojs&logoColor=white)](https://github.com/wbilibio/app-logistic-company-api)
+[![Repository](https://img.shields.io/badge/Node-Backend-339933?style=for-the-badge&logo=nodedojs&logoColor=white)](https://github.com/wbilibio/app-logistic-company-api)
 
 ### About The Project
 
@@ -34,7 +34,7 @@ The main technologies used on Front-end are listed below:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Follow the instructions to run the API correctly:
+Follow the instructions to run the APP correctly:
 
 ### Installation
 

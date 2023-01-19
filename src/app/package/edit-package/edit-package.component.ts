@@ -69,7 +69,6 @@ export class EditPackageComponent implements OnInit {
         next: value => {
           this.transactions = value.transactions?.length ? value.transactions : []
           this.storage = value.storage_location ?? '';
-          console.log(this.storage);
           let status = this.transactions.length ? this.transactions[0].status : '';
           if(!this.transactions.length) {
             this.formGeneral.get('status')?.disable();
@@ -96,17 +95,16 @@ export class EditPackageComponent implements OnInit {
         .update(formData, this.packageId).subscribe({
             next: value => {
               if(this.storage.id !== this.formGeneral.get('storage')?.value) {
-                console.log('associateStorage');
                 this.associateStorage();
               } else {
                 if(this.transactions.length){
-                  console.log('with storage');
                   this.updateStatus()
                 }
               }
             },
             error: err => {
               console.log('obs error', err)
+              this.notify('Oops! Something went wrong');
             }
         });
   }
@@ -118,12 +116,11 @@ export class EditPackageComponent implements OnInit {
     responseAPI$.subscribe({
       next: value => {
         if(this.transactions.length){
-          console.log('update status');
           this.updateStatus()
         } else {
-/*          this.router.navigate([`../`], {
+          this.router.navigate([`../`], {
             relativeTo: this.route
-          });*/
+          });
         }
 
       },
